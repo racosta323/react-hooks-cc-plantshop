@@ -24,11 +24,22 @@ function PlantPage() {
     setSearch(e.target.value)
   }
 
+  const filterSearch = plants.filter((plant)=>{
+    const lowerCasePlantsName = plant.name.toLowerCase()
+    const lowerCaseSearch = search.toLocaleLowerCase()
+    if(search === "") return true;
+    if(lowerCasePlantsName===lowerCaseSearch){
+      return plant
+    }
+  })
+
+
+
   return (
     <main>
       <NewPlantForm onFormSubmit={onFormSubmit}/>
       <Search onSearch={searchHandler} search={search}/>
-      <PlantList plants={plants}/>
+      <PlantList plants={filterSearch}/>
     </main>
   );
 }
