@@ -148,3 +148,13 @@ Example Response:
 ```json
 {}
 ```
+
+App
+    Header
+    Plant Page
+      NewPlantForm
+      Search
+      PlantList
+          Plant Card
+
+
