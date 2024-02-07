@@ -24,8 +24,19 @@ function NewPlantForm({ onFormSubmit }) {
 
   function handleSubmit(event){
     event.preventDefault()
-    onFormSubmit(formData)
-    setFormData(initialFormState)
+
+    fetch(`http://localhost:6001/plants`,{
+      method: 'POST',
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify(formData)
+    })
+    .then((resp)=>resp.json())
+    .then((newPlant) => {
+      onFormSubmit(newPlant)
+     setFormData(initialFormState)
+    })
   }
 
   return (
