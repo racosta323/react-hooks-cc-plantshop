@@ -1,7 +1,6 @@
 import React from "react";
 
 function PlantCard({ name, image, price }) {
-  console.log(name, image, price)
 
   return (
     <li className="card" data-testid="plant-item">
