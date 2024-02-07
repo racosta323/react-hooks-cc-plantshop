@@ -3,12 +3,14 @@ import { useState } from "react"
 
 function NewPlantForm({ onFormSubmit }) {
 
-  const [formData, setFormData] = useState({
+  const initialFormState = {
     name: "",
     image: "",
     price: "",
     id: ""
-  })
+  }
+
+  const [formData, setFormData] = useState(initialFormState)
 
   function handleChange(event){
     const key=event.target.id
@@ -23,6 +25,7 @@ function NewPlantForm({ onFormSubmit }) {
   function handleSubmit(event){
     event.preventDefault()
     onFormSubmit(formData)
+    setFormData(initialFormState)
   }
 
   return (
