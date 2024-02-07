@@ -7,6 +7,7 @@ import { useState, useEffect } from "react"
 function PlantPage() {
 
   const [plants, setPlants] = useState([])
+  const [search, setSearch] = useState("")
 
   useEffect(()=>{
     fetch("http://localhost:6001/plants")
@@ -19,10 +20,14 @@ function PlantPage() {
     setPlants(updatedPlants)
   }
 
+  function searchHandler(e){
+    setSearch(e.target.value)
+  }
+
   return (
     <main>
       <NewPlantForm onFormSubmit={onFormSubmit}/>
-      <Search />
+      <Search onSearch={searchHandler} search={search}/>
       <PlantList plants={plants}/>
     </main>
   );
