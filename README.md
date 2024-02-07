@@ -151,7 +151,7 @@ Example Response:
 
 App
     Header
-    Plant Page
+    Plant Page (states)
       NewPlantForm
       Search
       PlantList
