@@ -6,14 +6,13 @@ function NewPlantForm({ onFormSubmit }) {
   const initialFormState = {
     name: "",
     image: "",
-    price: "",
-    id: ""
+    price: ""
   }
 
   const [formData, setFormData] = useState(initialFormState)
 
   function handleChange(event){
-    const key=event.target.id
+    const key=event.target.name
     const value = event.target.value
 
     setFormData({
@@ -28,14 +27,14 @@ function NewPlantForm({ onFormSubmit }) {
     fetch(`http://localhost:6001/plants`,{
       method: 'POST',
       headers: {
-        "Content-Type": "application/json"
+        "Content-Type": "Application/JSON"
       },
       body: JSON.stringify(formData)
     })
     .then((resp)=>resp.json())
     .then((newPlant) => {
       onFormSubmit(newPlant)
-     setFormData(initialFormState)
+      setFormData(initialFormState)
     })
   }
 
@@ -46,7 +45,6 @@ function NewPlantForm({ onFormSubmit }) {
         <input 
           type="text" 
           name="name" 
-          id="name"
           placeholder="Plant name"
           value={formData.name}
           onChange ={handleChange} 
@@ -54,7 +52,6 @@ function NewPlantForm({ onFormSubmit }) {
         <input 
           type="text" 
           name="image" 
-          id="image" 
           placeholder="Image URL"
           value={formData.image}
           onChange ={handleChange} 
@@ -62,7 +59,6 @@ function NewPlantForm({ onFormSubmit }) {
         <input 
           type="number" 
           name="price"
-          id="price" 
           step="0.01" 
           placeholder="Price"
           value={formData.price}
